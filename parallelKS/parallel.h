@@ -1,6 +1,8 @@
 #ifndef _PARALLEL_H
 #define _PARALLEL_H
 
+#define OPENMP
+
 // cilkarts cilk++
 #if defined(CILK)
 #include <cilk.h>
@@ -68,9 +70,9 @@ static void setWorkers(int n) { }
 
 #include <limits.h>
 
-#if defined(LONG)
-typedef long intT;
-typedef unsigned long uintT;
+#if 1 // defined(LONG)
+typedef long long intT;
+typedef unsigned long long uintT;
 #define INT_T_MAX LONG_MAX
 #define UINT_T_MAX ULONG_MAX
 #else

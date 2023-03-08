@@ -1,3 +1,37 @@
+# Information
+
+**This project is not complete, beacuse of the lack support in modern parallel modules like `C++11`. **
+
+Now the project is use `OpenMP` for paralleling.
+
+Now the program is available in `parallelKS`, but failed in `parallelRange` in large seqenences.
+
+# Usage
+## Calling functions
+
+This module provides two functions: `suffixArray` and `LCP`:
+
+```C++
+uintT* suffixArray(unsigned char* s, uintT n);
+uintT* LCP(unsigned char* s, uintT n);
+```
+
+please include `<SA.h>` for using this module.
+
+## Ubuntu and MAC
+```bash
+cd parallelKS
+make
+```
+...and link `pkg.o` in your program.
+
+## Windows
+Firstly, please install Visual Studio 2022, and import `vs_config/llvm.vsconfig` in Visual Studio Installer. It will install `LLVM` for compiling the code.
+
+Then, import `KS_DLL.vcxproj` in your project, it will generate a DLL file `libKS.dll`.
+
+# RAW parallel-suffixArray README
+
 The directory structure is designed so each benchmark can be used on
 its own without any of the rest of the benchmarks.  Since there is a
 lot of sharing of code between benchmarks, the main copy of the code

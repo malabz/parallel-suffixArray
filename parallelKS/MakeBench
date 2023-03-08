@@ -33,17 +33,17 @@ $(GLOBAL) :
 	ln -s ../../common/$@ .
 
 # Files copied (linked) from benchmark common directory
-BENCH = $(TIME).C $(sort $(TIME_REQUIRE) $(BENCH_REQUIRE))
+BENCH = $(TIME).cpp $(sort $(TIME_REQUIRE) $(BENCH_REQUIRE))
 
 $(BENCH) :
 	ln -s ../common/$@ .
 
 # Make all implementation objects
-%.o : %.C $(GLOBAL_REQUIRE) $(BENCH_REQUIRE) $(LOCAL_REQUIRE)
+%.o : %.cpp $(GLOBAL_REQUIRE) $(BENCH_REQUIRE) $(LOCAL_REQUIRE)
 	$(PCC) $(PCFLAGS) -c $< -o $@
 
 # Make timing code object file
-$(TIME).o : $(TIME).C $(TIME_GLOBAL_REQUIRE) $(TIME_REQUIRE)
+$(TIME).o : $(TIME).cpp $(TIME_GLOBAL_REQUIRE) $(TIME_REQUIRE)
 	$(PCC) $(PCFLAGS) -c $< -o $@ 
 
 # Make benchmark

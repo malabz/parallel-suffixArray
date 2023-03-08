@@ -1,4 +1,6 @@
 OPENMP = 1
+LONG = 1
+#GCILK = 1
 
 include parallelDefs
 

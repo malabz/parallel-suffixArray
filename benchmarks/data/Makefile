@@ -2,7 +2,6 @@ GENERATORS = ../randomSeq ../almostSortedSeq ../exptSeq ../trigramSeq ../addData
 
 STRINGFILES = wikisamp.xml chr22.dna etext99
 STRINGFILES_LONG = wikisamp.xml chr22.dna etext99 HG18 howto jdk13c proteins rctail96 rfc sprot34 w3c2
-STRINGBZIP = $(addsuffix .bz2,$(STRINGFILES))
 
 $(GENERATORS) :
 	cd ..; make -s $(subst ../,,$@)
@@ -64,4 +63,4 @@ trigramString_% : ../trigramString
 	../trigramString $(subst trigramString_,,$@) $@
 
 clean :
-	rm -f *0* $(STRINGFILES) $(STRINGBZIP)
+	rm -f *0* $(STRINGFILES)

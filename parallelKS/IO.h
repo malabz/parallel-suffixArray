@@ -93,14 +93,14 @@ namespace benchIO {
     return 0;
   }
 
-  inline int xToStringLen(long a) { return 21;}
-  inline void xToString(char* s, long a) { sprintf(s,"%ld",a);}
+  inline int xToStringLen(long long a) { return 21;}
+  inline void xToString(char* s, long long a) { sprintf(s,"%ld",a);}
 
-  inline int xToStringLen(unsigned long a) { return 21;}
-  inline void xToString(char* s, unsigned long a) { sprintf(s,"%lu",a);}
+  inline int xToStringLen(unsigned long long a) { return 21;}
+  inline void xToString(char* s, unsigned long long a) { sprintf(s,"%lu",a);}
 
-  inline uint xToStringLen(uint a) { return 12;}
-  inline void xToString(char* s, uint a) { sprintf(s,"%u",a);}
+  inline unsigned int xToStringLen(unsigned int a) { return 12;}
+  inline void xToString(char* s, unsigned int a) { sprintf(s,"%u",a);}
 
   inline int xToStringLen(int a) { return 12;}
   inline void xToString(char* s, int a) { sprintf(s,"%d",a);}

@@ -23,7 +23,7 @@
 #include <iostream>
 #include <algorithm>
 #include "gettime.h"
-//#include "getmemory.h"
+#include "getmemory.h"
 #include "parallel.h"
 #include "IO.h"
 #include "parseCommandLine.h"
@@ -41,7 +41,7 @@ void timeSuffixArray(unsigned char* s, long n, int rounds, char* outFile) {
     R = suffixArray(s, n);
     nextTimeN();
   }
-  //cout<<"Peak-memory: " <<getPeakRSS() / (1024*1024) << endl;
+  cout<<"Peak-memory: " <<getPeakRSS() / (1024*1024) << endl;
 
   if (outFile != NULL) writeIntArrayToFile((intT*) R, (intT) n, outFile);
   free (R);

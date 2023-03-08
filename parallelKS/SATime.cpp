@@ -23,7 +23,7 @@
 #include <iostream>
 #include <algorithm>
 #include "gettime.h"
-//#include "getmemory.h"
+#include "getmemory.h"
 #include "parallel.h"
 #include "IO.h"
 #include "parseCommandLine.h"
@@ -32,8 +32,8 @@
 using namespace std;
 using namespace benchIO;
 
-void timeSuffixArray(unsigned char* s, long n, int rounds, char* outFile) {
-  intT* R;
+void timeSuffixArray(unsigned char* s, long long n, int rounds, char* outFile) {
+  uintT* R;
   R = suffixArray(s, n); 
   for (int i=0; i < rounds; i++) {
     free (R);
@@ -41,7 +41,7 @@ void timeSuffixArray(unsigned char* s, long n, int rounds, char* outFile) {
     R = suffixArray(s, n);
     nextTimeN();
   }
-  //cout<<"Peak-memory: " <<getPeakRSS() / (1024*1024) << endl;
+  cout<<"Peak-memory: " <<getPeakRSS() / (1024*1024) << endl;
 
   if (outFile != NULL) writeIntArrayToFile((intT*) R, (intT) n, outFile);
   free (R);
@@ -53,6 +53,6 @@ int parallel_main(int argc, char* argv[]) {
   char* oFile = P.getOptionValue("-o");
   int rounds = P.getOptionIntValue("-r",1);
   _seq<char> S = readStringFromFile(iFile);
-  
+  cout << sizeof(long) << endl; 
   timeSuffixArray((unsigned char*) S.A, S.n, rounds, oFile);
 }

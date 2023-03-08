@@ -2,28 +2,26 @@
 
 #ifndef _BENCH_GETTIME_INCLUDED
 #define _BENCH_GETTIME_INCLUDED
-
+#if 1 //defined(__linux__) || defined(__APPLE__)
+#define _CALC_TIME
 #include <stdlib.h>
-#include <sys/time.h>
 #include <iomanip>
 #include <iostream>
+#include <chrono>
 
 struct timer {
   double totalTime;
-  double lastTime;
+  clock_t lastTime;
   double totalWeight;
   bool on;
-  struct timezone tzp;
   timer() {
-    struct timezone tz = {0, 0};
     totalTime=0.0; 
     totalWeight=0.0;
-    on=0; tzp = tz;}
+    on=0; 
+  }
   void clear() { totalTime=0.0; totalWeight=0.0; on=0;}
-  double getTime() {
-    timeval now;
-    gettimeofday(&now, &tzp);
-    return ((double) now.tv_sec) + ((double) now.tv_usec)/1000000.;
+  clock_t getTime() {
+    return clock();
   }
   void start () {
     on = 1;
@@ -31,7 +29,7 @@ struct timer {
   } 
   double stop () {
     on = 0;
-    double d = (getTime()-lastTime);
+    double d = double(getTime()-lastTime);
     totalTime += d;
     return d;
   } 
@@ -44,8 +42,8 @@ struct timer {
   } 
 
   double total() {
-    if (on) return totalTime + getTime() - lastTime;
-    else return totalTime;
+    if (on) return (totalTime + getTime() - lastTime) / CLOCKS_PER_SEC;
+    else return totalTime / CLOCKS_PER_SEC;
   }
 
   double next() {
@@ -93,6 +91,7 @@ static timer _tm;
 #define reportTime(_str) _tm.reportTotal(_str);
 #define nextTime(_string) _tm.reportNext(_string);
 #define nextTimeN() _tm.reportT(_tm.next());
+#endif
 
 #endif // _BENCH_GETTIME_INCLUDED
 
