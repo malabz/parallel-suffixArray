@@ -1,10 +1,14 @@
 # Information
 
-**This project is not complete, beacuse of the lack support in modern parallel modules like `C++11`. **
+**This project is not complete, beacuse of the lack support in modern parallel modules like `C++11`. Can be enhanced. **
 
-Now the project is use `OpenMP` for paralleling.
+The project used `OpenMP` for paralleling.
 
-Now the program is available in `parallelKS` and `parallelRange-2`, but failed in `parallelRange` in large seqenences.
+Now the program are available, called `parallelKS` and `parallelRange-2`, but failed in `parallelRange` in large seqenences.
+
+The SA source codes are from [https://github.com/snnynhr/ParallelSuffixArrays](https://github.com/snnynhr/ParallelSuffixArrays) and [https://github.com/jlabeit/parallel-range-lite](https://github.com/jlabeit/parallel-range-lite).
+
+Another useful parallel radix sort is [here](https://github.com/karuto/Parallel-Radix-Sort)([ref](https://www.cnblogs.com/willhua/p/9652899.html), [ppt](https://www8.cs.umu.se/kurser/5DV011/VT13/F8.pdf)).
 
 # Usage
 ## KS
