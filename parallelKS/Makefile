@@ -10,6 +10,7 @@ OTHER = merge.h rangeMin.h
 GLOBAL_REQUIRE = parallel.h sequence.h utils.h $(SORT) $(OTHER)
 LOCAL_REQUIRE = 
 OBJS = pks.o
+LIBS = libks.so
 
 include ../common/timeRequiredFiles
 include MakeBench
